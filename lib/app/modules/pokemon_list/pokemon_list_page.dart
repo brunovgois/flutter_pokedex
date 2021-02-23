@@ -11,50 +11,72 @@ class PokemonListPage extends StatefulWidget {
 
 class _PokemonListPageState
     extends ModularState<PokemonListPage, PokemonListController> {
-  //use 'controller' variable to access controller
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: SafeArea(
-        child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize:
-                  Size.fromHeight(MediaQuery.of(context).size.height * 0.19),
-              child: AppBar(
-                backgroundColor: Colors.cyan[50], //temp
-                title: Container(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          'Pokemon',
-                          style: TextStyle(color: Colors.black),
-                        ),
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xffdeedfa), Color(0xffc5e5c3)],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight),
+          ),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: PreferredSize(
+            preferredSize:
+                Size.fromHeight(MediaQuery.of(context).size.height * 0.15),
+            child: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              title: Container(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: Text(
+                        'Pokemon',
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w500),
                       ),
-                      TextField(
-                        style: TextStyle(height: 0.3),
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          suffixIcon: Icon(Icons.mic),
-                          filled: true,
-                          fillColor: Colors.grey[300],
-                          labelText: 'Search',
-                          border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30.0)),
+                    ),
+                    Container(
+                      height: 38,
+                      child: Opacity(
+                        opacity: 0.50,
+                        child: TextField(
+                          textAlign: TextAlign.start,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            suffixIcon: Icon(
+                              Icons.mic,
+                              color: Colors.black,
+                            ),
+                            filled: true,
+                            fillColor: Colors.grey[400],
+                            labelText: 'Search',
+                            border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)),
+                                borderSide: BorderSide.none),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                toolbarHeight: 300,
               ),
+              toolbarHeight: 300,
             ),
-            body: Text('Pokemon List..')),
-      ),
+          ),
+          body: Container(
+            color: Colors.red,
+          ),
+        ),
+      ],
     );
   }
 }
