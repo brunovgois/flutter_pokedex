@@ -11,6 +11,7 @@ class PokemonListPage extends StatefulWidget {
 
 class _PokemonListPageState
     extends ModularState<PokemonListPage, PokemonListController> {
+  int _currentBottomTabBarIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -30,6 +31,7 @@ class _PokemonListPageState
             preferredSize:
                 Size.fromHeight(MediaQuery.of(context).size.height * 0.15),
             child: AppBar(
+              toolbarHeight: 300,
               elevation: 0,
               backgroundColor: Colors.transparent,
               title: Container(
@@ -69,11 +71,32 @@ class _PokemonListPageState
                   ],
                 ),
               ),
-              toolbarHeight: 300,
+            ),
+          ),
+          bottomNavigationBar: SizedBox(
+            height: 80,
+            child: BottomNavigationBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              currentIndex: _currentBottomTabBarIndex,
+              items: [
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.pets), label: 'Pokemon'), //temp icon
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.track_changes),
+                    label: 'Moves'), //temp icon
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.bug_report), label: 'Itens'),
+              ],
+              onTap: (index) {
+                setState(() {
+                  _currentBottomTabBarIndex = index;
+                });
+              },
             ),
           ),
           body: Container(
-            color: Colors.red,
+            color: Colors.white,
           ),
         ),
       ],
