@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_pokedex/app/widgets/background.dart';
 import 'pokemon_list_controller.dart';
 
 class PokemonListPage extends StatefulWidget {
@@ -12,19 +13,13 @@ class PokemonListPage extends StatefulWidget {
 class _PokemonListPageState
     extends ModularState<PokemonListPage, PokemonListController> {
   int _currentBottomTabBarIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Color(0xffdeedfa), Color(0xffc5e5c3)],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight),
-          ),
-        ),
+        Background(),
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: PreferredSize(
