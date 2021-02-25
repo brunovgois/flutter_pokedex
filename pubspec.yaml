@@ -23,6 +23,7 @@ vars:
     get: flutter pub get
     runner: flutter pub run build_runner
 scripts: 
+    mobx: $get & $runner watch --delete-conflicting-outputs
     mobx_build: $runner build
     mobx_watch: $clean & $get & $runner watch
     mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
@@ -33,6 +34,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  dartz: ^0.9.2
   dio: ^3.0.10
   flutter_mobx: ^1.1.0+2
   mobx: ^1.2.1+4

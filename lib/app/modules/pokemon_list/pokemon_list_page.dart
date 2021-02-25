@@ -28,11 +28,28 @@ class _PokemonListPageState
               child: PokemonAppBar()),
           bottomNavigationBar:
               SizedBox(height: 80, child: PokemonBottomNavigationBar()),
-          body: Container(
-            color: Colors.white,
+          body: ElevatedButton(
+            onPressed: () => controller.findAllPokemons(),
+            child: Text(" press mee"),
           ),
         ),
       ],
     );
   }
 }
+
+
+// FutureBuilder<List<Pokemon>>(
+//             future: controller.findAllPokemons().then((value) => print(value)),
+//             builder: (context, snapshot) {
+//               if (snapshot.connectionState != ConnectionState.done) {
+//                 return Center(
+//                   child: return !snapshot.hadData
+//         ? Center(child: CircularProgressIndicator())
+//         : Observer(builder: (_) {
+//             return ListView.builder(itemBuilder: (_, index) {});
+//           });,
+//                 );
+//               }
+//             },
+//           ),

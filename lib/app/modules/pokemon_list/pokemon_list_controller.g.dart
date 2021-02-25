@@ -9,39 +9,33 @@ part of 'pokemon_list_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$PokemonListController on _PokemonListControllerBase, Store {
-  final _$valueAtom = Atom(name: '_PokemonListControllerBase.value');
+  final _$pokeListAtom = Atom(name: '_PokemonListControllerBase.pokeList');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  ObservableList<Pokemon> get pokeList {
+    _$pokeListAtom.reportRead();
+    return super.pokeList;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set pokeList(ObservableList<Pokemon> value) {
+    _$pokeListAtom.reportWrite(value, super.pokeList, () {
+      super.pokeList = value;
     });
   }
 
-  final _$_PokemonListControllerBaseActionController =
-      ActionController(name: '_PokemonListControllerBase');
+  final _$findAllPokemonsAsyncAction =
+      AsyncAction('_PokemonListControllerBase.findAllPokemons');
 
   @override
-  void increment() {
-    final _$actionInfo = _$_PokemonListControllerBaseActionController
-        .startAction(name: '_PokemonListControllerBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_PokemonListControllerBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> findAllPokemons() {
+    return _$findAllPokemonsAsyncAction.run(() => super.findAllPokemons());
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+pokeList: ${pokeList}
     ''';
   }
 }
