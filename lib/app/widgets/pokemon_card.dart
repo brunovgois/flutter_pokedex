@@ -18,7 +18,7 @@ class PokemonCard extends StatelessWidget {
         scale: 1,
       ),
       title: Text(name),
-      subtitle: Text(num),
+      subtitle: Text('#$num'),
       // trailing: Text(type[0]),
     );
   }
