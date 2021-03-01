@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter_pokedex/app/entities/pokemon.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -12,19 +11,12 @@ class PokemonListController = _PokemonListControllerBase
 
 abstract class _PokemonListControllerBase with Store {
   @observable
-  ObservableList<Pokemon> pokeList;
+  ObservableList<Pokemon> pokeList = <Pokemon>[].asObservable();
 
   @action
   Future<void> findAllPokemons() async {
     var result = await Dio().get(
         "http://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
-
-    parsePokemons(result.data);
-  }
-
-  void parsePokemons(responseData) {
-    List response = json.decode(responseData)["pokemon"];
-
-    pokeList = response.map((e) => Pokemon.fromJson(e)).toList().asObservable();
+    pokeList = pokemonListFromMap(result.data).pokemon.asObservable();
   }
 }
