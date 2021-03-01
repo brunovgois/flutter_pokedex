@@ -38,47 +38,66 @@ class _PokemonListPageState
               SizedBox(height: 80, child: PokemonBottomNavigationBar()),
           body: Padding(
             padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(width: 5, color: Color(0xff6eaafc)),
-                  bottom: BorderSide(width: 5, color: Color(0xff51e85e)),
+            child: Column(
+              children: [
+                Container(
+                  height: 5,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xff6ea8fc), Color(0xff51e85e)],
+                    ),
+                  ),
                 ),
-              ),
-              child: FutureBuilder(
-                initialData: [],
-                future: controller.findAllPokemons(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState != ConnectionState.done) {
-                    return Container(
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
                       color: Colors.white,
-                      child: Center(child: CircularProgressIndicator()),
-                    );
-                  } else {
-                    return Observer(
-                      builder: (_) {
-                        return ListView.separated(
-                          itemCount: controller.pokeList.length ?? 0,
-                          itemBuilder: (context, index) {
-                            var tracker = controller.pokeList[index];
-                            return PokemonCard(
-                              num: tracker.num,
-                              imgUri: tracker.img,
-                              name: tracker.name,
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return Divider();
-                          },
-                        );
+                    ),
+                    child: FutureBuilder(
+                      initialData: [],
+                      future: controller.findAllPokemons(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState != ConnectionState.done) {
+                          return Container(
+                            color: Colors.white,
+                            child: Center(child: CircularProgressIndicator()),
+                          );
+                        } else {
+                          return Observer(
+                            builder: (_) {
+                              return ListView.separated(
+                                itemCount: controller.pokeList.length ?? 0,
+                                itemBuilder: (context, index) {
+                                  var tracker = controller.pokeList[index];
+                                  return PokemonCard(
+                                    num: tracker.num,
+                                    imgUri: tracker.img,
+                                    name: tracker.name,
+                                  );
+                                },
+                                separatorBuilder: (context, index) {
+                                  return Divider();
+                                },
+                              );
+                            },
+                          );
+                        }
                       },
-                    );
-                  }
-                },
-              ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 5,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xff6ea8fc), Color(0xff51e85e)],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
+        )
       ],
     );
   }
