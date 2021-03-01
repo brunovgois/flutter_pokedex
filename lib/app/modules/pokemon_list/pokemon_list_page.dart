@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_pokedex/app/entities/pokemon.dart';
 import 'package:flutter_pokedex/app/widgets/background.dart';
 import 'package:flutter_pokedex/app/widgets/pokemon_app_bar.dart';
 import 'package:flutter_pokedex/app/widgets/pokemon_bottom_navigation_bar.dart';
+import 'package:flutter_pokedex/app/widgets/pokemon_card.dart';
 import 'pokemon_list_controller.dart';
 
 class PokemonListPage extends StatefulWidget {
@@ -41,21 +41,39 @@ class _PokemonListPageState
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                    top: BorderSide(width: 5, color: Color(0xff6eaafc)),
-                    bottom: BorderSide(width: 5, color: Color(0xff51e85e))),
+                  top: BorderSide(width: 5, color: Color(0xff6eaafc)),
+                  bottom: BorderSide(width: 5, color: Color(0xff51e85e)),
+                ),
               ),
-              child: Observer(
-                builder: (_) {
-                  return ListView.separated(
-                    itemCount: controller.pokeList.length,
-                    itemBuilder: (context, index) {
-                      var tracker = controller.pokeList[index];
-                      return Text(tracker.name);
-                    },
-                    separatorBuilder: (context, index) {
-                      return Divider();
-                    },
-                  );
+              child: FutureBuilder(
+                initialData: [],
+                future: controller.findAllPokemons(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState != ConnectionState.done) {
+                    return Container(
+                      color: Colors.white,
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return Observer(
+                      builder: (_) {
+                        return ListView.separated(
+                          itemCount: controller.pokeList.length ?? 0,
+                          itemBuilder: (context, index) {
+                            var tracker = controller.pokeList[index];
+                            return PokemonCard(
+                              num: tracker.num,
+                              imgUri: tracker.img,
+                              name: tracker.name,
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return Divider();
+                          },
+                        );
+                      },
+                    );
+                  }
                 },
               ),
             ),
@@ -65,19 +83,3 @@ class _PokemonListPageState
     );
   }
 }
-
-
-// FutureBuilder<List<Pokemon>>(
-//             future: controller.findAllPokemons(),
-//             builder: (context, snapshot) {
-//               if (snapshot.connectionState != ConnectionState.done) {
-//                 return Center(
-//                   child: return !snapshot.hadData
-//         ? Center(child: CircularProgressIndicator())
-//         : Observer(builder: (_) {
-//             return ListView.builder(itemBuilder: (_, index) {});
-//           }),
-//                 );
-//               }
-//             },
-//           );
