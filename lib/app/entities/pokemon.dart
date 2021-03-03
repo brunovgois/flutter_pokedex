@@ -3,6 +3,7 @@
 //     final pokemonList = pokemonListFromMap(jsonString);
 
 import 'dart:convert';
+import '../core/PokeType.dart';
 
 PokemonList pokemonListFromMap(String str) =>
     PokemonList.fromMap(json.decode(str));
@@ -51,7 +52,7 @@ class Pokemon {
   String num;
   String name;
   String img;
-  List<Type> type;
+  List<PokeType> type;
   String height;
   String weight;
   String candy;
@@ -61,7 +62,7 @@ class Pokemon {
   double avgSpawns;
   String spawnTime;
   List<double> multipliers;
-  List<Type> weaknesses;
+  List<PokeType> weaknesses;
   List<Evolution> nextEvolution;
   List<Evolution> prevEvolution;
 
@@ -70,7 +71,7 @@ class Pokemon {
         num: json["num"],
         name: json["name"],
         img: json["img"],
-        type: List<Type>.from(json["type"].map((x) => typeValues.map[x])),
+        type: List<PokeType>.from(json["type"].map((x) => typeValues.map[x])),
         height: json["height"],
         weight: json["weight"],
         candy: json["candy"],
@@ -82,8 +83,8 @@ class Pokemon {
         multipliers: json["multipliers"] == null
             ? null
             : List<double>.from(json["multipliers"].map((x) => x.toDouble())),
-        weaknesses:
-            List<Type>.from(json["weaknesses"].map((x) => typeValues.map[x])),
+        weaknesses: List<PokeType>.from(
+            json["weaknesses"].map((x) => typeValues.map[x])),
         nextEvolution: json["next_evolution"] == null
             ? null
             : List<Evolution>.from(
@@ -152,46 +153,25 @@ class Evolution {
       };
 }
 
-enum Type {
-  FIRE,
-  ICE,
-  FLYING,
-  PSYCHIC,
-  WATER,
-  GROUND,
-  ROCK,
-  ELECTRIC,
-  GRASS,
-  FIGHTING,
-  POISON,
-  BUG,
-  FAIRY,
-  GHOST,
-  DARK,
-  STEEL,
-  DRAGON,
-  NORMAL
-}
-
 final typeValues = EnumValues({
-  "Bug": Type.BUG,
-  "Dark": Type.DARK,
-  "Dragon": Type.DRAGON,
-  "Electric": Type.ELECTRIC,
-  "Fairy": Type.FAIRY,
-  "Fighting": Type.FIGHTING,
-  "Fire": Type.FIRE,
-  "Flying": Type.FLYING,
-  "Ghost": Type.GHOST,
-  "Grass": Type.GRASS,
-  "Ground": Type.GROUND,
-  "Ice": Type.ICE,
-  "Normal": Type.NORMAL,
-  "Poison": Type.POISON,
-  "Psychic": Type.PSYCHIC,
-  "Rock": Type.ROCK,
-  "Steel": Type.STEEL,
-  "Water": Type.WATER
+  "Bug": PokeType.BUG,
+  "Dark": PokeType.DARK,
+  "Dragon": PokeType.DRAGON,
+  "Electric": PokeType.ELECTRIC,
+  "Fairy": PokeType.FAIRY,
+  "Fighting": PokeType.FIGHTING,
+  "Fire": PokeType.FIRE,
+  "Flying": PokeType.FLYING,
+  "Ghost": PokeType.GHOST,
+  "Grass": PokeType.GRASS,
+  "Ground": PokeType.GROUND,
+  "Ice": PokeType.ICE,
+  "Normal": PokeType.NORMAL,
+  "Poison": PokeType.POISON,
+  "Psychic": PokeType.PSYCHIC,
+  "Rock": PokeType.ROCK,
+  "Steel": PokeType.STEEL,
+  "Water": PokeType.WATER
 });
 
 class EnumValues<T> {

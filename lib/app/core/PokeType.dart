@@ -1,0 +1,20 @@
+enum PokeType {
+  FIRE,
+  ICE,
+  FLYING,
+  PSYCHIC,
+  WATER,
+  GROUND,
+  ROCK,
+  ELECTRIC,
+  GRASS,
+  FIGHTING,
+  POISON,
+  BUG,
+  FAIRY,
+  GHOST,
+  DARK,
+  STEEL,
+  DRAGON,
+  NORMAL
+}
