@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_pokedex/app/core/PokeType.dart';
+import 'package:flutter_pokedex/app/widgets/icon_types.dart';
 
 class PokemonCard extends StatelessWidget {
   final String imgUri;
-  final List<String> type;
+  final List<PokeType> type;
   final String name;
   final String num;
 
@@ -19,7 +20,9 @@ class PokemonCard extends StatelessWidget {
       ),
       title: Text(name),
       subtitle: Text('#$num'),
-      // trailing: Text(type[0]),
+      trailing: IconTypes(
+        pokeTypes: type,
+      ),
     );
   }
 }

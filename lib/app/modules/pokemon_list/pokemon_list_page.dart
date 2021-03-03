@@ -73,6 +73,7 @@ class _PokemonListPageState
                                     num: tracker.num,
                                     imgUri: tracker.img,
                                     name: tracker.name,
+                                    type: tracker.type,
                                   );
                                 },
                                 separatorBuilder: (context, index) {
