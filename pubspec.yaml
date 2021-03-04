@@ -69,7 +69,23 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icons/bug.svg
-  #   - images/a_dot_ham.jpeg
+    - assets/icons/dark.svg
+    - assets/icons/dragon.svg
+    - assets/icons/electric.svg
+    - assets/icons/fairy.svg
+    - assets/icons/fighting.svg
+    - assets/icons/fire.svg
+    - assets/icons/flying.svg
+    - assets/icons/ghost.svg
+    - assets/icons/grass.svg
+    - assets/icons/ground.svg
+    - assets/icons/ice.svg
+    - assets/icons/normal.svg
+    - assets/icons/poison.svg
+    - assets/icons/psychic.svg
+    - assets/icons/rock.svg
+    - assets/icons/steel.svg
+    - assets/icons/water.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
