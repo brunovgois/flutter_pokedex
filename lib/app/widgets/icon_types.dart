@@ -17,6 +17,14 @@ class IconTypes extends StatelessWidget {
     );
   }
 
+  String getSvgIconUrl(PokeType pokeType) {
+    String path = 'assets/icons/';
+
+    String type = pokeType.toString().split('.').last.toLowerCase();
+
+    return path + '$type.svg';
+  }
+
   pokeTypeIconRow(List<PokeType> pokeTypes) {
     return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
       Padding(
@@ -26,7 +34,7 @@ class IconTypes extends StatelessWidget {
           children: [
             getPokeIcon(pokeTypes[0]),
             SvgPicture.asset(
-              "assets/icons/bug.svg",
+              getSvgIconUrl(pokeTypes[0]),
               height: 14,
             ),
           ],
@@ -40,7 +48,7 @@ class IconTypes extends StatelessWidget {
             children: [
               getPokeIcon(pokeTypes[1]),
               SvgPicture.asset(
-                "assets/icons/bug.svg",
+                getSvgIconUrl(pokeTypes[1]),
                 height: 14,
               ),
             ],
