@@ -18,8 +18,14 @@ class PokemonCard extends StatelessWidget {
         imgUri,
         scale: 1,
       ),
-      title: Text(name),
-      subtitle: Text('#$num'),
+      title: Text(
+        name,
+        style: TextStyle(fontWeight: FontWeight.w600),
+      ),
+      subtitle: Text(
+        '#$num',
+        style: TextStyle(fontWeight: FontWeight.w200, fontSize: 14),
+      ),
       trailing: IconTypes(
         pokeTypes: type,
       ),
