@@ -11,7 +11,6 @@ class PokeTypeContainerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Colors.red),
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Expanded(
           child: Container(
@@ -20,8 +19,8 @@ class PokeTypeContainerHeader extends StatelessWidget {
                     color: Colors.black)), //debug //TODO move image left
             child: Image.network(
               pokemon.img,
-              height: 70,
-              width: 70,
+              height: 60,
+              width: 60,
             ),
           ),
         ),
