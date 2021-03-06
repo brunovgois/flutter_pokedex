@@ -1,5 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/app/entities/pokemon.dart';
+import 'package:flutter_pokedex/app/widgets/poke_type_container.dart';
+import 'package:flutter_pokedex/app/widgets/poke_type_container_header.dart';
 
 class PokemonResistancesDialog extends StatelessWidget {
   Pokemon pokemon;
@@ -9,11 +12,20 @@ class PokemonResistancesDialog extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    print(pokemon.multipliers);
+    //requestType();
     return AlertDialog(
-      title: Text('temp'),
+      title: PokeTypeContainerHeader(pokemon),
+      content: PokeTypeContainer(),
       elevation: 24,
-      backgroundColor: Colors.red,
     );
+  }
+
+  Future<void> requestType() async {
+    try {
+      var response = await Dio().get("pokeapi.co/api/v2/pokemon/");
+      print(response);
+    } catch (e) {
+      print(e);
+    }
   }
 }
