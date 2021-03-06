@@ -73,10 +73,10 @@ class _PokemonListPageState
                                   return GestureDetector(
                                     onLongPress: () {
                                       showDialog(
-                                          context: context,
-                                          builder: (_) =>
-                                              PokemonResistancesDialog(
-                                                  tracker));
+                                        context: context,
+                                        builder: (_) =>
+                                            PokemonResistancesDialog(tracker),
+                                      );
                                     },
                                     child: PokemonCard(
                                       num: tracker.num,
