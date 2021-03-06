@@ -5,6 +5,7 @@ import 'package:flutter_pokedex/app/widgets/background.dart';
 import 'package:flutter_pokedex/app/widgets/pokemon_app_bar.dart';
 import 'package:flutter_pokedex/app/widgets/pokemon_bottom_navigation_bar.dart';
 import 'package:flutter_pokedex/app/widgets/pokemon_card.dart';
+import 'package:flutter_pokedex/app/widgets/pokemon_resistances_dialog.dart';
 import 'pokemon_list_controller.dart';
 
 class PokemonListPage extends StatefulWidget {
@@ -69,11 +70,20 @@ class _PokemonListPageState
                                 itemCount: controller.pokeList.length ?? 0,
                                 itemBuilder: (context, index) {
                                   var tracker = controller.pokeList[index];
-                                  return PokemonCard(
-                                    num: tracker.num,
-                                    imgUri: tracker.img,
-                                    name: tracker.name,
-                                    type: tracker.type,
+                                  return GestureDetector(
+                                    onLongPress: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (_) =>
+                                              PokemonResistancesDialog(
+                                                  tracker));
+                                    },
+                                    child: PokemonCard(
+                                      num: tracker.num,
+                                      imgUri: tracker.img,
+                                      name: tracker.name,
+                                      type: tracker.type,
+                                    ),
                                   );
                                 },
                                 separatorBuilder: (context, index) {
