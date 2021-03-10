@@ -11,7 +11,7 @@ class IconTypes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
+      width: 100,
       alignment: Alignment.center,
       child: pokeTypeIconRow(pokeTypes),
     );
@@ -32,7 +32,16 @@ class IconTypes extends StatelessWidget {
         child: Stack(
           alignment: AlignmentDirectional.center,
           children: [
-            getPokeIcon(pokeTypes[0]),
+            Container(
+              decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 7,
+                )
+              ]),
+              child: getPokeIconColorCircle(pokeTypes[0]),
+            ),
             SvgPicture.asset(
               getSvgIconUrl(pokeTypes[0]),
               height: 14,
@@ -46,7 +55,16 @@ class IconTypes extends StatelessWidget {
           child: Stack(
             alignment: AlignmentDirectional.center,
             children: [
-              getPokeIcon(pokeTypes[1]),
+              Container(
+                decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 7,
+                  )
+                ]),
+                child: getPokeIconColorCircle(pokeTypes[1]),
+              ),
               SvgPicture.asset(
                 getSvgIconUrl(pokeTypes[1]),
                 height: 14,
@@ -57,7 +75,7 @@ class IconTypes extends StatelessWidget {
     ]);
   }
 
-  getPokeIcon(PokeType pokeType) {
+  getPokeIconColorCircle(PokeType pokeType) {
     switch (pokeType) {
       case PokeType.FIRE:
         return ColorPokeCircle(Colors.orange);
