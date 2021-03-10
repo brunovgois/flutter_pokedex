@@ -40,7 +40,7 @@ class PokeTypeContainerHeader extends StatelessWidget {
           child: IconTypes(
             pokeTypes: pokemon.type,
           ),
-        )
+        ),
       ]),
     );
   }
