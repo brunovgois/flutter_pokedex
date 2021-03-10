@@ -14,6 +14,12 @@ class PokemonResistancesDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     //requestType();
     return AlertDialog(
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.grey), //TODO fix border color
+        borderRadius: BorderRadius.all(
+          Radius.circular(20),
+        ),
+      ),
       title: PokeTypeContainerHeader(pokemon),
       content: PokeTypeContainer(),
       elevation: 24,
