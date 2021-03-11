@@ -11,8 +11,10 @@ class PokemonListModule extends ChildModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute,
-            child: (_, args) => PokemonListPage()),
+        ModularRouter(
+          Modular.initialRoute,
+          child: (_, __) => PokemonListPage(),
+        ),
       ];
 
   static Inject get to => Inject<PokemonListModule>.of();

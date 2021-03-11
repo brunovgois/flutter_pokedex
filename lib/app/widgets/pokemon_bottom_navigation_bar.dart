@@ -26,6 +26,7 @@ class _PokemonBottomNavigationBarState
         BottomNavigationBarItem(icon: Icon(Icons.bug_report), label: 'Itens'),
       ],
       onTap: (index) {
+        print(index);
         setState(() {
           _currentBottomTabBarIndex = index;
         });
