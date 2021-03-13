@@ -16,7 +16,7 @@ abstract class _PokemonListControllerBase with Store {
   @action
   Future<void> findAllPokemons() async {
     var result = await Dio().get(
-        "http://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
+        "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json");
     pokeList = pokemonListFromMap(result.data).pokemon.asObservable();
   }
 }
