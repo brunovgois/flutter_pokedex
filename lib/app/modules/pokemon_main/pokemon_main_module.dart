@@ -1,9 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_pokedex/app/modules/pokemon_main/pages/pokemon_list/pokemon_list_controller.dart';
 import 'package:flutter_pokedex/app/modules/pokemon_main/pokemon_main_page.dart';
 
 class PokemonMainModule extends ChildModule {
   @override
-  List<Bind> get binds => [];
+  List<Bind> get binds => [
+        Bind((i) => PokemonListController()),
+      ];
 
   @override
   List<ModularRouter> get routers => [

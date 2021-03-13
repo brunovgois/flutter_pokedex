@@ -1,6 +1,4 @@
-import 'package:flutter_pokedex/app/modules/pokemon_list/pokemon_list_module.dart';
 import 'package:flutter_pokedex/app/modules/pokemon_main/pokemon_main_module.dart';
-import 'package:flutter_pokedex/app/modules/pokemon_moves/pokemon_moves_module.dart';
 
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -16,8 +14,6 @@ class AppModule extends MainModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, module: PokemonMainModule()),
-        ModularRouter('/list', module: PokemonListModule()),
-        ModularRouter('/moves', module: PokemonMovesModule())
       ];
 
   @override
