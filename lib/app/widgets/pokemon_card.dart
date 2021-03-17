@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/app/core/PokeType.dart';
 import 'package:flutter_pokedex/app/widgets/icon_types.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class PokemonCard extends StatelessWidget {
   final String imgUri;
@@ -14,9 +15,9 @@ class PokemonCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.network(
-        imgUri,
-        scale: 1,
+      leading: CachedNetworkImage(
+        placeholder: (context, url) => CircularProgressIndicator(),
+        imageUrl: imgUri,
       ),
       title: Text(
         name,
