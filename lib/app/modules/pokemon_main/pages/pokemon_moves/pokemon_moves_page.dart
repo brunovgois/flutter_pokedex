@@ -8,8 +8,15 @@ class PokemonMovesPage extends StatefulWidget {
 class _PokemonMovesPageState extends State<PokemonMovesPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Pokemon Moves'),
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Center(
+          child: Text('Moves'),
+        ),
+      ),
     );
   }
 }
