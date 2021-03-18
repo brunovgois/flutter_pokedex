@@ -15,12 +15,6 @@ class PokemonListPage extends StatefulWidget {
 class _PokemonListPageState
     extends ModularState<PokemonListPage, PokemonListController> {
   @override
-  void initState() {
-    controller.findAllPokemons();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
