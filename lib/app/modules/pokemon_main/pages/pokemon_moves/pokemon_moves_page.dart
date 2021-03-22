@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_pokedex/app/modules/pokemon_main/pages/pokemon_moves/pokemon_moves_controller.dart';
+import 'package:flutter_pokedex/app/widgets/pokemon_moves_card.dart';
 
 class PokemonMovesPage extends StatefulWidget {
   @override
@@ -30,9 +30,11 @@ class _PokemonMovesPageState
             return ListView.builder(
               itemCount: controller.moveList.length ?? 0,
               itemBuilder: (context, index) {
-                print(controller.moveList.length);
                 var tracker = controller.moveList[index];
-                return Text(tracker.name);
+                return PokemonMovesCard(
+                  name: tracker.name,
+                  type: tracker.type.name,
+                );
               },
             );
           },
