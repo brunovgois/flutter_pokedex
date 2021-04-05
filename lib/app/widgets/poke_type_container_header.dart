@@ -13,15 +13,10 @@ class PokeTypeContainerHeader extends StatelessWidget {
     return Container(
       child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-                border: Border.all(
-                    color: Colors.black)), //debug //TODO move image left
-            child: Image.network(
-              pokemon.img,
-              height: 60,
-              width: 60,
-            ),
+          child: Image.network(
+            pokemon.img,
+            height: 60,
+            width: 60,
           ),
         ),
         Column(
