@@ -12,10 +12,8 @@ abstract class _PokemonMovesControllerBase with Store {
 
   @action
   Future<void> findAllMoves() async {
-    print('request MOVES');
-
     try {
-      await PokeAPI.getObjectList<Move>(1, 50) // number of moves: 826
+      await PokeAPI.getObjectList<Move>(1, 50) // number of existing moves: 826
           .then((value) => moveList = value.asObservable());
     } on Exception catch (e) {
       print(e);
