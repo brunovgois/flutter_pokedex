@@ -11,8 +11,9 @@ class PokemonResistancesDialog extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    //requestType();
     return AlertDialog(
+      contentPadding: EdgeInsets.all(0.0),
+      titlePadding: EdgeInsets.fromLTRB(0.0, 5, 5, 5),
       shape: RoundedRectangleBorder(
         side: BorderSide(color: Colors.grey),
         borderRadius: BorderRadius.all(
