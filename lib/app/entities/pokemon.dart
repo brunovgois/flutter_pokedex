@@ -8,8 +8,6 @@ import '../core/PokeType.dart';
 PokemonList pokemonListFromMap(String str) =>
     PokemonList.fromMap(json.decode(str));
 
-String pokemonListToMap(PokemonList data) => json.encode(data.toMap());
-
 class PokemonList {
   PokemonList({
     this.pokemon,
@@ -21,10 +19,6 @@ class PokemonList {
         pokemon:
             List<Pokemon>.from(json["pokemon"].map((x) => Pokemon.fromMap(x))),
       );
-
-  Map<String, dynamic> toMap() => {
-        "pokemon": List<dynamic>.from(pokemon.map((x) => x.toMap())),
-      };
 }
 
 class Pokemon {
