@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/app/entities/pokemon.dart';
 import 'package:flutter_pokedex/app/widgets/poke_type_container.dart';
@@ -15,7 +14,7 @@ class PokemonResistancesDialog extends StatelessWidget {
     //requestType();
     return AlertDialog(
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.grey), //TODO fix border color
+        side: BorderSide(color: Colors.grey),
         borderRadius: BorderRadius.all(
           Radius.circular(20),
         ),
@@ -24,14 +23,5 @@ class PokemonResistancesDialog extends StatelessWidget {
       content: PokeTypeContainer(),
       elevation: 24,
     );
-  }
-
-  Future<void> requestType() async {
-    try {
-      var response = await Dio().get("pokeapi.co/api/v2/pokemon/");
-      print(response);
-    } catch (e) {
-      print(e);
-    }
   }
 }
