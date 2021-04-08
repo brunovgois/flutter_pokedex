@@ -515,13 +515,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  pokeapi:
-    dependency: "direct main"
-    description:
-      name: pokeapi
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   pool:
     dependency: transitive
     description:
@@ -596,7 +589,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   sqflite:
     dependency: transitive
     description:

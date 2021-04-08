@@ -1,6 +1,7 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_pokedex/app/entities/pokemon_moves.dart';
 import 'package:mobx/mobx.dart';
-import 'package:pokeapi/model/move/move.dart';
-import 'package:pokeapi/pokeapi.dart';
+
 part 'pokemon_moves_controller.g.dart';
 
 class PokemonMovesController = _PokemonMovesControllerBase
@@ -8,13 +9,15 @@ class PokemonMovesController = _PokemonMovesControllerBase
 
 abstract class _PokemonMovesControllerBase with Store {
   @observable
-  ObservableList<Move> moveList = <Move>[].asObservable();
+  ObservableList<PokemonMoves> moveList = <PokemonMoves>[].asObservable();
 
   @action
   Future<void> findAllMoves() async {
     try {
-      await PokeAPI.getObjectList<Move>(1, 50) // number of existing moves: 826
-          .then((value) => moveList = value.asObservable());
+      for (int i = 1; i < 15; i++) {
+        var result = await Dio().get('https://pokeapi.co/api/v2/move/$i');
+        moveList.add(PokemonMoves.fromJson(result.data));
+      }
     } on Exception catch (e) {
       print(e);
     }

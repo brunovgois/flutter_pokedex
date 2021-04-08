@@ -12,13 +12,13 @@ mixin _$PokemonMovesController on _PokemonMovesControllerBase, Store {
   final _$moveListAtom = Atom(name: '_PokemonMovesControllerBase.moveList');
 
   @override
-  ObservableList<Move> get moveList {
+  ObservableList<PokemonMoves> get moveList {
     _$moveListAtom.reportRead();
     return super.moveList;
   }
 
   @override
-  set moveList(ObservableList<Move> value) {
+  set moveList(ObservableList<PokemonMoves> value) {
     _$moveListAtom.reportWrite(value, super.moveList, () {
       super.moveList = value;
     });

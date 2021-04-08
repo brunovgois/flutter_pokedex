@@ -33,7 +33,7 @@ class _PokemonMovesPageState
                 var tracker = controller.moveList[index];
                 return PokemonMovesCard(
                   name: tracker.name,
-                  type: tracker.type.name,
+                  type: tracker.type,
                 );
               },
             );
